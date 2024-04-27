@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sus</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #titulo{
+            font-size: 2em;
+            text-align: center;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 50vh;
+            margin: 50% 0 0 0;
+        }
+        #boton{
+            width: 100%;
+            height: auto;
+            padding: 1rem;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><span id="titulo">Número aleatorio</span></h1>
+        <button id="boton">Dame un número aleatorio</button><br>
+        <img src="./sus.jpeg" alt="" id="sus">
+        <img src="./noice.jpeg" alt="" id="noice">
+        <p id="no" style="font-size: 22pt;">No</p>
+    </div>
+</body>
+<script>
+    let boton = document.getElementById('boton')
+    let susMono = document.getElementById('sus')
+    let nope = document.getElementById('no')
+    let noice = document.getElementById('noice')
+    let tiempoRandom = Math.floor(Math.random() * 10000)
+    let titulo = document.getElementById('titulo')
+
+    // startup
+    let reaccion = 1
+    susMono.style.display = 'none'
+    nope.style.display = 'none'
+    noice.style.display = 'none'
+    const frases = [
+  "que nooo",
+  "como enfadas nooo",
+  "nel",
+  "nope",
+  "nopo",
+  "negatorio",
+  "k kstroso",
+  "no como enfadaaas",
+  "nein",
+  "no pero en ingles",
+  "no pero en español",
+  "muy sus, no",
+  "mira el título 👆"
+];
+let numero
+    function sus() {
+        if (reaccion == 1) {
+            nope.innerHTML = 'no'
+            console.log(reaccion);
+        } else {
+            reacciones()
+        }
+        susMono.style.display = 'block'
+        nope.style.display = 'block'
+        setTimeout(() => {
+            numero = Math.floor(Math.random() * 100)
+            susMono.style.display = 'none'
+            nope.innerHTML = numero
+            setNoice()
+        }, tiempoRandom)
+        reaccion++
+        console.log(reaccion);
+    }
+    function setNoice() {
+        if (reaccion == 10 || numero == 69) {
+            numero = 69
+            nope.innerHTML = numero
+            noice.style.display = 'block'
+        } else {
+            noice.style.display = 'none'
+        }
+    }
+    function reacciones() {
+        nope.innerHTML = frases[Math.floor(Math.random() * 13)]
+        if (nope.innerHTML == "mira el título 👆"){
+            titulo.innerHTML = "NO 😭👌"
+        }else{
+            titulo.innerHTML = 'Número aleatorio'
+        }
+    }
+    boton.addEventListener('click', sus)
+</script>
+
+</html>
